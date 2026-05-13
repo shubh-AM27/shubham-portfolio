@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useMode } from "@/hooks/use-mode";
 import { modes, type Mode } from "@/data/modes";
 
-const order: Mode[] = ["devops", "security", "fullstack"];
+const order: Mode[] = ["security", "fullstack"];
 
 export function ModeSwitcher() {
   const { mode, setMode } = useMode();
