@@ -1,0 +1,191 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Cosmic black foundation */
+  --background: oklch(0.05 0.01 270);
+  --foreground: oklch(0.96 0.01 270);
+  --card: oklch(0.09 0.015 270);
+  --card-foreground: oklch(0.96 0.01 270);
+  --popover: oklch(0.09 0.015 270);
+  --popover-foreground: oklch(0.96 0.01 270);
+  --muted: oklch(0.15 0.02 270);
+  --muted-foreground: oklch(0.65 0.02 270);
+  --secondary: oklch(0.13 0.02 270);
+  --secondary-foreground: oklch(0.96 0.01 270);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --destructive: oklch(0.65 0.25 22);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  /* Mode-driven accent (set dynamically) */
+  --accent-l: 0.7;
+  --accent-c: 0.22;
+  --accent-h: 250;
+  --accent: oklch(var(--accent-l) var(--accent-c) var(--accent-h));
+  --accent-foreground: oklch(0.05 0.01 270);
+  --primary: var(--accent);
+  --primary-foreground: oklch(0.05 0.01 270);
+  --ring: var(--accent);
+  --accent-glow: rgba(80, 150, 255, 0.5);
+}
+
+.dark { color-scheme: dark; }
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-display);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: var(--accent-foreground); }
+}
+
+@layer utilities {
+  .font-mono { font-family: var(--font-mono); }
+  .font-display { font-family: var(--font-display); }
+
+  .glass {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--accent) 6%, transparent),
+      rgba(255, 255, 255, 0.02)
+    );
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid color-mix(in oklab, var(--accent) 18%, transparent);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 24px var(--accent-glow), 0 0 1px var(--accent-glow);
+  }
+  .glow-border {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--accent) 40%, transparent),
+      0 0 28px -4px var(--accent-glow),
+      inset 0 0 18px -8px var(--accent-glow);
+  }
+  .glow-card {
+    position: relative;
+    transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s;
+  }
+  .glow-card::before {
+    content: "";
+    position: absolute; inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--accent) 70%, transparent),
+      transparent 40%,
+      color-mix(in oklab, var(--accent) 30%, transparent));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: .6;
+    transition: opacity .4s;
+    pointer-events: none;
+  }
+  .glow-card:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -25px var(--accent-glow); }
+  .glow-card:hover::before { opacity: 1; }
+
+  .gradient-text {
+    background: linear-gradient(120deg,
+      var(--accent) 0%,
+      color-mix(in oklab, var(--accent) 50%, white) 50%,
+      var(--accent) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    animation: shimmer 6s linear infinite;
+  }
+  @keyframes shimmer { to { background-position: 200% 0; } }
+
+  .nebula-bg {
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 0%, color-mix(in oklab, var(--accent) 18%, transparent), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 30%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 60%),
+      radial-gradient(ellipse 90% 60% at 50% 100%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 60%),
+      var(--color-background);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--accent) 8%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--accent) 8%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 80%);
+  }
+
+  .scanlines {
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      color-mix(in oklab, var(--accent) 6%, transparent) 3px
+    );
+  }
+
+  @keyframes float-y {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+  .animate-float { animation: float-y 7s ease-in-out infinite; }
+
+  @keyframes orbit {
+    from { transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg); }
+  }
+  .animate-orbit { animation: orbit var(--orbit-d, 20s) linear infinite; }
+
+  @keyframes pulse-glow {
+    0%,100% { opacity: .55; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.04); }
+  }
+  .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+
+  @keyframes blink { 50% { opacity: 0; } }
+  .caret::after {
+    content: "▍"; margin-left: 4px; color: var(--accent);
+    animation: blink 1s steps(1) infinite;
+  }
+
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
