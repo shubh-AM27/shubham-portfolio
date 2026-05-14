@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Reveal, SectionTitle } from "@/components/Reveal";
 import { personalInfo } from "@/data/personalInfo";
-import { Github, Linkedin, Mail, Send, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Send, CodeXml } from "lucide-react";
 
 function Field({
   label, type = "text", as = "input", ...rest
@@ -37,7 +37,7 @@ export function Contact() {
   const socials = [
     { Icon: Github, label: "GitHub", href: personalInfo.socials.github },
     { Icon: Linkedin, label: "LinkedIn", href: personalInfo.socials.linkedin },
-    { Icon: Twitter, label: "Twitter", href: personalInfo.socials.twitter },
+    { Icon: CodeXml, label: "Leetcode", href: personalInfo.socials.leetcode },
     { Icon: Mail, label: "Email", href: `mailto:${personalInfo.email}` },
   ];
   return (

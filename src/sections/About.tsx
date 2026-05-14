@@ -3,9 +3,9 @@ import { personalInfo } from "@/data/personalInfo";
 import { Sparkles, Globe, Cpu } from "lucide-react";
 
 const stats = [
-  { Icon: Sparkles, label: "Years in orbit", value: "8+" },
-  { Icon: Globe, label: "Systems shipped", value: "40+" },
-  { Icon: Cpu, label: "Cloud regions", value: "12" },
+  { Icon: Sparkles, label: "Years in orbit", value: "3" },
+  { Icon: Globe, label: "Systems shipped", value: "4" },
+  { Icon: Cpu, label: "Cloud regions", value: "1" },
 ];
 
 export function About() {
