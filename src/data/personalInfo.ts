@@ -6,7 +6,7 @@ export const personalInfo = {
   email: "hello@aether.dev",
   location: "Remote · Earth Orbit",
   socials: {
-    github: "https://github.com",
+    github: "https://github.com/shubh-AM27",
     linkedin: "https://linkedin.com",
     twitter: "https://twitter.com",
   },

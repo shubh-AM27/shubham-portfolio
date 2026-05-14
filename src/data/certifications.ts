@@ -1,8 +1,5 @@
 export const certifications = [
-  { name: "AWS Solutions Architect — Professional", issuer: "Amazon", year: "2024", url: "#" },
-  { name: "Certified Kubernetes Administrator", issuer: "CNCF", year: "2023", url: "#" },
-  { name: "OSCP — Offensive Security Certified Professional", issuer: "OffSec", year: "2023", url: "#" },
-  { name: "HashiCorp Terraform Associate", issuer: "HashiCorp", year: "2022", url: "#" },
-  { name: "CISSP", issuer: "ISC²", year: "2024", url: "#" },
-  { name: "Google Cloud Professional DevOps", issuer: "Google", year: "2023", url: "#" },
+  { name: "The Web Developer Bootcamp 2026", issuer: "Udemy", year: "2026", url: "https://www.udemy.com/certificate/UC-122eeace-5ac7-4f6f-a44d-8bd5df54bb85/" },
+  { name: "Introduction to Cybersecurity", issuer: "Cisco", year: "2026", url: "#" },
+  { name: "Web Development Fundamentals", issuer: "IBM", year: "2026", url: "#" }
 ];
