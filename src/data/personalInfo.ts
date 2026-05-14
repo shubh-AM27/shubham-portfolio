@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: "Shubham Kumar Singh",
-  titles: ["Cybersecurity Specialist", "Full Stack Developer"],
+  titles: ["Cybersecurity Enthusiast", "Full Stack Developer"],
   tagline: "Engineering and Defending systems across the digital cosmos.",
   bio: "I architect scalable infrastructure, secure distributed systems, and craft delightful product experiences. Operating at the intersection of cloud, code, and security.",
   email: "shubhamsinghedu2004@gmail.com",
